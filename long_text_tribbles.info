@@ -1,0 +1,5 @@
+type = module
+name = Long text tribbles
+description = Prevents unlimited long-text field from saving additional items every time a node is edited and saved. 
+backdrop = 1.x
+package = Other

@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ *  Provides functions to prevents unwanted empty long-text field items from being
+ *  saved to the database. 
+ */
+
+/**
+ * Implements hook_node_presave().
+ */
+function long_text_tribbles_node_presave($node) {
+  $instances = field_info_instances('node', $node->type);
+  foreach ($instances as $field_name => $instance) {
+    $field_info = field_info_field($field_name);
+    if (in_array($field_info['type'], array('text_with_summary', 'text_long')) && $field_info['cardinality'] == -1 && $instance['settings']['text_processing'] == 1) {
+      foreach ($node->$field_name[LANGUAGE_NONE] as $delta => $item) {
+        if (empty($item['value'])) {
+          unset($node->$field_name[LANGUAGE_NONE][$delta]);
+        }
+      }
+    }
+  }
+}
