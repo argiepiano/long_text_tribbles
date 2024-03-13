@@ -1,4 +1,4 @@
-# Header Block Dropdown Menu
+# Long text tribbles
 
 This simple module prevents unwanted empty long-text field items from being saved
 to the database.
