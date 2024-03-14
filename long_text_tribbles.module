@@ -12,7 +12,7 @@ function long_text_tribbles_node_presave($node) {
   $instances = field_info_instances('node', $node->type);
   foreach ($instances as $field_name => $instance) {
     $field_info = field_info_field($field_name);
-    if (in_array($field_info['type'], array('text_with_summary', 'text_long')) && $field_info['cardinality'] == -1 && $instance['settings']['text_processing'] == 1) {
+    if (!empty($node->$field_name[LANGUAGE_NONE]) && in_array($field_info['type'], array('text_with_summary', 'text_long')) && $field_info['cardinality'] == -1 && $instance['settings']['text_processing'] == 1) {
       foreach ($node->$field_name[LANGUAGE_NONE] as $delta => $item) {
         if (empty($item['value'])) {
           unset($node->$field_name[LANGUAGE_NONE][$delta]);
