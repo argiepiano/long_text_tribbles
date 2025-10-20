@@ -14,7 +14,7 @@ This module prevents that by removing empty items from long text fields during a
 ## Installation
 
 - Install this module using the official Backdrop CMS instructions at https://backdropcms.org/guide/modules.
-- Once enabled, select "Dropdown menu" under the new configuration setting "Menu style" within the Header block configuration. "Top level only" is the default provided by core.
+
 
 ## Credits
 
